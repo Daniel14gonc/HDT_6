@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.*;
 import java.util.Map;
+import java.util.ArrayList;
 
 class Main {
   public static void main(String[] args) {
@@ -8,6 +9,7 @@ class Main {
     Scanner scan = new Scanner(System.in);
     Map<String, String> coleccion; //Todas las cartas que existen.
     Map<String, String> cartas; //Cartas del usuario.
+    Map<String, String> cantidad;
 
     System.out.println("\n Bienvenido al sistema de coleccion de cartas!");
     System.out.println("\n Elije la implementacion que deseas utilizar:");
@@ -31,6 +33,7 @@ class Main {
 
           coleccion = mapFactory.getMap(opcion);
           cartas = mapFactory.getMap(opcion);
+          cantidad = mapFactory.getMap(opcion);
           break;
         } else {
           scan.nextLine();
@@ -76,9 +79,10 @@ class Main {
 
         System.out.print("\n\t Opcion -> ");
         seleccion = scan.nextInt();
-        scan.nextLine();
 
         if (seleccion == 1) {
+
+          scan.nextLine();
 
           while(true){
 
@@ -89,29 +93,58 @@ class Main {
             nombre = scan.nextLine();
 
 
-            System.out.print("\n\nIngrese el tipo de la carta que desea agregar a su coleccion -> ");
-            tipo = scan.nextLine();
+            if (coleccion.containsKey(nombre)) {
 
+              cartas.put(nombre,coleccion.get(nombre));
+              System.out.println("\n\t La carta ha sido agregada con exito !");
 
-            if (coleccion.containsKey(nombre) && coleccion.containsValue(tipo)) {
-              cartas.put(nombre,tipo);
-              System.out.print("\n\t La carta ha sido agregada con exito !");
+              if(cartas.containsKey(nombre)){
+                int can = Integer.parseInt(cantidad.get(nombre))+1;
+                cantidad.put(nombre, can+"");
+              }
               break;
+
             }else{
-              System.out.print("\n\t La carta que ha ingresado no existe!");
+              System.out.println("\n\t La carta que ha ingresado no existe!");
             }
+
           }
 
+          System.out.println("\n\nPresiona [ ENTER ] para regresar al menu...");
+          scan.nextLine();
 
         } else if (seleccion == 2) {
 
         } else if (seleccion == 3) {
+
+          scan.nextLine();
+
           //muestra el nombre,el tipo y la cantidad de cartas.
+          ArrayList<String> nombre = new ArrayList<String>();
+          ArrayList<String> tipo = new ArrayList<String>();
+          ArrayList<Integer> canti = new ArrayList<Integer>();
+
+          for (String carta : cartas.keySet()) {
+
+            nombre.add(carta);
+            tipo.add(cartas.get(carta));
+            canti.add(Integer.parseInt(cantidad.get(carta)));
+
+          }
+
+          for(int i = 0; i<nombre.size();i++){
+            System.out.println("\n Nombre: "+nombre.get(i)+" |  Tipo: "+tipo.get(i)+" | Cantidad: "+cantidad.get(i));
+          }
+
+          System.out.println("\n\nPresiona [ ENTER ] para regresar al menu...");
+          scan.nextLine();
+
         } else if (seleccion == 4) {
 
         } else if (seleccion == 5) {
 
         } else if (seleccion == 6) {
+
 
         }else if(seleccion == 7) {
           System.out.println("Adios!");
