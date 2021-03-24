@@ -3,6 +3,18 @@ import java.util.*;
 import java.util.Map;
 import java.util.ArrayList;
 
+/**
+ * Autores: Juan Diego Avila
+ *          Marco Pablo Orozco
+ *          Daniel Gonzalez Carrillo 20293
+ *
+ * Modificacion: 2021/03/23
+ *
+ * Descripcion: Clase que permite elegir hacer todas las operaciones
+ *              con las cartas asi como determinar la implementacion
+ *              del Map que se desea usar.
+*/
+
 class Main {
   public static void main(String[] args) {
     // Scanner para leer las respuestas del usuario
@@ -140,8 +152,9 @@ class Main {
           scan.nextLine();
 
         } else if (seleccion == 4) {
-              
+
         } else if (seleccion == 5) {
+          //Se imprimen todas las cartas con sus tipos de forma desordenada.
           String res = "";
           for(String keys: coleccion.keySet()){
             res +=   keys + " " +  coleccion.get(keys) + "\n";
@@ -149,8 +162,19 @@ class Main {
           System.out.println(res);
 
         } else if (seleccion == 6) {
+          //Se obtienen los tipos de las cartas y luego se ordenan con un sort de collections.
+          ArrayList<String> types= new ArrayList<String>();
+          for(String key: coleccion.keySet()){
+            types.add(coleccion.get(key) + " "+  key);
+          }
+          Collections.sort(types);
 
-
+          //Se imprimen las cartas ordenadas por tipo.
+          String res = "";
+          for(String cards: types){
+            res += cards + "\n";
+          }
+          System.out.println(res);
         }else if(seleccion == 7) {
           System.out.println("Adios!");
         }else {
