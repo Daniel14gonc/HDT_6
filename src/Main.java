@@ -53,7 +53,7 @@ class Main {
         }
 
       } catch (Exception e) {
-
+        scan.nextLine();
         System.out.println("\n Ingrese valores numericos !");
       }
     }
@@ -93,26 +93,22 @@ class Main {
         seleccion = scan.nextInt();
 
         if (seleccion == 1) {
-
-          scan.nextLine();
-
           while(true){
-
+            scan.nextLine();
             String nombre = "";
-            String tipo = "";
-
             System.out.print("\n\nIngrese el nombre de la carta que desea agregar a su coleccion -> ");
             nombre = scan.nextLine();
 
 
             if (coleccion.containsKey(nombre)) {
-
-              cartas.put(nombre,coleccion.get(nombre));
               System.out.println("\n\t La carta ha sido agregada con exito !");
 
               if(cartas.containsKey(nombre)){
                 int can = Integer.parseInt(cantidad.get(nombre))+1;
                 cantidad.put(nombre, can+"");
+              }else{
+                cantidad.put(nombre, 1+"");
+                cartas.put(nombre,coleccion.get(nombre));
               }
               break;
 
@@ -122,15 +118,10 @@ class Main {
 
           }
 
-          System.out.println("\n\nPresiona [ ENTER ] para regresar al menu...");
-          scan.nextLine();
-
         } else if (seleccion == 2) {
 
         } else if (seleccion == 3) {
-
           scan.nextLine();
-
           //muestra el nombre,el tipo y la cantidad de cartas.
           ArrayList<String> nombre = new ArrayList<String>();
           ArrayList<String> tipo = new ArrayList<String>();
@@ -145,11 +136,9 @@ class Main {
           }
 
           for(int i = 0; i<nombre.size();i++){
-            System.out.println("\n Nombre: "+nombre.get(i)+" |  Tipo: "+tipo.get(i)+" | Cantidad: "+cantidad.get(i));
+            System.out.println("\n Nombre: "+nombre.get(i)+" |  Tipo: "+tipo.get(i)+" | Cantidad: "+canti.get(i));
           }
 
-          System.out.println("\n\nPresiona [ ENTER ] para regresar al menu...");
-          scan.nextLine();
 
         } else if (seleccion == 4) {
 
