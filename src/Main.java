@@ -140,8 +140,13 @@ class Main {
           scan.nextLine();
 
         } else if (seleccion == 4) {
-
+              
         } else if (seleccion == 5) {
+          String res = "";
+          for(String keys: coleccion.keySet()){
+            res +=   keys + " " +  coleccion.get(keys) + "\n";
+          }
+          System.out.println(res);
 
         } else if (seleccion == 6) {
 
