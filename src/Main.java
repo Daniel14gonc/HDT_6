@@ -119,6 +119,24 @@ class Main {
           }
 
         } else if (seleccion == 2) {
+        	try{
+            
+            // Se escanea el nombre de la carta la cual el usuario esta interesado
+            String carta = scan.nextLine();
+
+            // obtenemos la carta
+            String cartaTipo = coleccion.get(carta);
+
+            // Se muestra al usuario
+            System.out.println("La carta " + carta);
+            System.out.println("Es de tipo: " + cartaTipo);
+
+          } catch(Exception e){
+
+            // En caso de ingresar algo invalido, se muestra este error
+            System.out.println("Has ingresado una opcion erronea o una carta inexistente");
+            
+          }
 
         } else if (seleccion == 3) {
           scan.nextLine();
@@ -141,6 +159,25 @@ class Main {
 
 
         } else if (seleccion == 4) {
+          
+          // Crear un arraylist donde se almacenara la informacion de cada carta
+          ArrayList<String> tipos = new ArrayList<String>();
+
+          // Se recorre el hash map con foreach
+          // Por cada String clave, se almacenara en el Arraylist la informacion de cada carta
+          for(String clave: cartas.keySet()){
+            // Se almacena el tipo de carta con su nombre
+            tipos.add(cartas.get(clave) + " | " + clave);
+          }
+
+          // Se ordena esta lista ya que la primer palabra es el tipo
+          Collections.sort(tipos);
+
+          // Imprimir
+          System.out.println("TIPO | NOMBRE DE LA CARTA");
+          for (String carta : tipos) {
+            System.out.println(carta);
+          }
 
         } else if (seleccion == 5) {
           //Se imprimen todas las cartas con sus tipos de forma desordenada.
